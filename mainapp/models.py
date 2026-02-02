@@ -1,10 +1,15 @@
+# mainapp/models.py
 from django.db import models
+from django.contrib.auth.models import User
+from django.utils import timezone
 
-# Create your models here.
 class ShortURL(models.Model):
-    original_url = models.URLField(max_length=700)
-    short_url = models.CharField(max_length=100)
-    time_date_created = models.DateTimeField()
-    
+    original_url = models.URLField(max_length=500)
+    short_url = models.CharField(max_length=10, unique=True)
+    creator = models.ForeignKey(User, on_delete=models.CASCADE, related_name='shorturls')
+    time_date_created = models.DateTimeField(default=timezone.now)
+    click_count = models.PositiveIntegerField(default=0)
+    expiration_date = models.DateTimeField(null=True, blank=True)  # optional expiration
+
     def __str__(self):
-        return self.original_url
+        return f"{self.short_url} -> {self.original_url}"

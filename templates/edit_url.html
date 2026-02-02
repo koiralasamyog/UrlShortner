@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 70vh;">
+    <div class="card p-4" style="max-width: 500px; width: 100%;">
+        <h3 class="mb-3 text-center">Edit Short URL</h3>
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.original_url.label_tag }}
+            {{ form.original_url }}
+
+            {{ form.custom_short_url.label_tag }}
+            {{ form.custom_short_url }}
+
+            {{ form.expiration_date.label_tag }}
+            {{ form.expiration_date }}
+
+            <button type="submit" class="btn btn-primary btn-block mt-2">Save Changes</button>
+            <a href="{% url 'all_urls' %}" class="btn btn-secondary btn-block mt-2">Cancel</a>
+        </form>
+    </div>
+</div>
+{% endblock %}
