@@ -40,3 +40,7 @@ def home(request):
 def redirect_url(request, url):
     obj = get_object_or_404(ShortURL, short_url=url)
     return redirect(obj.original_url)
+
+def all_urls(request):
+    urls = ShortURL.objects.all().order_by('-time_date_created')
+    return render(request, 'all_urls.html', {'urls': urls})

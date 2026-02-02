@@ -21,21 +21,13 @@
             <hr>
             <h6 class="text-success mt-3">🎉 Short URL Created</h6>
             <code class="d-block mb-2">
-                {{ request.get_host }}/{{ short_url }}
+                {{ request.get_host }}/s/{{ short_url }}
             </code>
-            <a href="/{{ short_url }}" target="_blank"
+            <a href="s/{{ short_url }}" target="_blank"
                class="btn btn-outline-success btn-sm">
                 Visit Link
             </a>
         {% endif %}
-
-        <hr>
-        <p class="small mb-1">Check out my other projects</p>
-        <a href="https://github.com/koiralasamyog"
-           target="_blank"
-           class="btn btn-outline-dark btn-sm">
-            GitHub
-        </a>
 
     </div>
 </div>

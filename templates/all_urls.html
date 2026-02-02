@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+
+    <div class="card p-4">
+        <h3 class="text-center mb-4">📄 All Shortened URLs</h3>
+
+        {% if urls %}
+            <div class="table-responsive">
+                <table class="table table-hover table-bordered">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>#</th>
+                            <th>Original URL</th>
+                            <th>Short URL</th>
+                            <th>Created</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for url in urls %}
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td class="text-truncate" style="max-width: 300px;">
+                                <a href="{{ url.original_url }}" target="_blank">
+                                    {{ url.original_url }}
+                                </a>
+                            </td>
+                            <td>
+                                <a href="/{{ url.short_url }}" target="_blank">
+                                    {{ request.get_host }}/{{ url.short_url }}
+                                </a>
+                            </td>
+                            <td>
+                                {{ url.time_date_created|date:"Y-m-d H:i" }}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% else %}
+            <p class="text-center text-muted">No URLs found.</p>
+        {% endif %}
+    </div>
+
+</div>
+{% endblock %}

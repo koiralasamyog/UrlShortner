@@ -8,73 +8,103 @@
     <link rel="icon" type="image/png" href="{% static 'images/website.png' %}">
     <title>Url Shortener</title>
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
-        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
-        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
-        crossorigin="anonymous"></script>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <!-- Optional JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
     <style>
-    body {
-    	min-height: 100vh;
-    	display: flex;
-   	flex-direction: column;
-    }
-    .navbar {
-	background-color: #2a231d
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
-    }
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background-color: #f5f5f5; /* Light background */
+            color: #333;
+        }
 
-    .card {
-        border: none;
-        border-radius: 12px;
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
-    }
+        .navbar {
+            background-color: #007bff; /* Bootstrap primary blue */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+        }
 
-    .btn {
-        border-radius: 8px;
-    }
+        .navbar .btn {
+            border-radius: 6px;
+        }
 
-    main {
-        flex: 1;
-    }
+        .card {
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            background-color: #fff; /* Cards stay white */
+            color: #000;
+        }
 
-    footer {
-	min-height: 50px;
-        box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
-        padding: 12px 0;
-        text-align: center;
-    }    
+        main {
+            flex: 1;
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+
+        footer {
+            min-height: 50px;
+            background-color: #f5f5f5;
+            color: #6c757d;
+            text-align: center;
+            padding: 12px 0;
+            font-size: 0.9rem;
+            border-top: 1px solid #dee2e6;
+        }
+        footer a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+        a.nav-link, .navbar-brand {
+            color: #fff !important;
+        }
     </style>
-
 </head>
 
 <body>
-    <div id="page-container">
-        <div id="content-wrap">
-            <nav class="navbar navbar-light bg-light">
-                <a class="navbar-brand" href="/">
-                    <img src="{% static 'images/website.png' %}" width="50" height="50" class="mr-2">
-                    UrlShortner
-                </a>
-            </nav>
-
-            {% block content %}
-
-            {% endblock content %}
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-dark px-4">
+        <a class="navbar-brand d-flex align-items-center" href="/">
+            <img src="{% static 'images/website.png' %}" width="40" height="40" class="mr-2">
+            <strong>UrlShortner</strong>
+        </a>
+        <div class="ml-auto">
+            <a href="/all/" class="btn btn-outline-light btn-sm">All URLs</a>
         </div>
-    </div>
-	
-	<footer id="footer">
-            <center>
-                <h5>URLShortner by Samyog Koirala</h5>
-            </center>
-        </footer>
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <main class="container">
+        {% block content %}
+        {% endblock content %}
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-light border-top mt-auto py-3">
+        <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center">
+            <!-- Left: copyright / name -->
+            <div class="text-muted mb-2 mb-md-0">
+                © 2026 URLShortner by <strong>Samyog Koirala</strong>
+            </div>
+
+            <!-- Right: button / link -->
+            <div>
+                <span class="small text-muted mr-2">Check out my other projects:</span>
+                <a href="https://github.com/koiralasamyog" target="_blank" class="btn btn-outline-primary btn-sm">
+                    GitHub
+                </a>
+            </div>
+        </div>
+    </footer>
 
 </body>
 </html>
