@@ -1,41 +1,42 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import ShortURL
 from .forms import CreateNewShortURL
 from datetime import datetime
-import random, string
+import random
+import string
 
-# Create your views here.
+
 def home(request):
-    return render(request, 'home.html')
+    short_url = None
 
-def createShortURL(request):
     if request.method == 'POST':
         form = CreateNewShortURL(request.POST)
+
         if form.is_valid():
             original_website = form.cleaned_data['original_url']
-            random_chars_list = list(string.ascii_letters)
-            random_chars = ''
-            for i in range(6):
-                random_chars += random.choice(random_chars_list)
-            while len(ShortURL.objects.filter(short_url=random_chars))!=0:
-                for i in range(6):
-                    random_chars+= random.choice(random_chars_list)
 
-            d = datetime.now()
-            s = ShortURL(original_url=original_website, short_url=random_chars,time_date_created=d)
-            s.save()
-            return render(request, 'urlcreated.html', {'chars':random_chars})
+            chars = string.ascii_letters + string.digits
+            random_chars = ''.join(random.choice(chars) for _ in range(6))
+
+            while ShortURL.objects.filter(short_url=random_chars).exists():
+                random_chars = ''.join(random.choice(chars) for _ in range(6))
+
+            obj = ShortURL.objects.create(
+                original_url=original_website,
+                short_url=random_chars,
+                time_date_created=datetime.now()
+            )
+
+            short_url = obj.short_url
+
     else:
-        form=CreateNewShortURL()
-        context={'form':form}
-        return render(request, 'create.html', context)
+        form = CreateNewShortURL()
 
+    return render(request, 'home.html', {
+        'form': form,
+        'short_url': short_url
+    })
 
-def redirect(request, url):
-    current_obj = ShortURL.objects.filter(short_url=url)
-    if len(current_obj)==0:
-        return render(request, 'pagenotfound.html')
-    context = {'obj':current_obj[0]}
-    return render(request, 'redirect.html', context)
-
-
+def redirect_url(request, url):
+    obj = get_object_or_404(ShortURL, short_url=url)
+    return redirect(obj.original_url)

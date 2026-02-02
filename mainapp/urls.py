@@ -1,8 +1,7 @@
 from django.urls import path
-from .views import home, createShortURL, redirect
+from .views import home, redirect_url
 
 urlpatterns = [
         path('',home, name='home'),
-        path('create/', createShortURL, name='create'),
-        path('<str:url>', redirect, name='redirect'),
+        path('<str:url>/', redirect_url, name='redirect'),
 ]
