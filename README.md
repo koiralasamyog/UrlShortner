@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-
-=======
 # URL Shortener
 
 A **simple, fast, and reliable URL shortener** built with **Django**.  
@@ -86,4 +83,3 @@ python manage.py createsuperuser
 python manage.py runserver
 ```
 Open http://127.0.0.1:8000 in your browser.
->>>>>>> 568aa54 (READme Modified)
