@@ -2,18 +2,21 @@
 
 
 {% block content %}
-<div class="jumbotron">
-    <center>
-        <h1>URLShort Url Shortener</h1>
-        <a href="/create/"><button type="button" class="btn btn-secondary">Create New URL</button></a>
-    </center>
-</div>
+<div class="container mt-5">
+    <div class="card text-center p-5">
+        <h1 class="mb-3">🔗 URLShortner</h1>
+        <p class="text-muted">Simple. Fast. Reliable URL shortening.</p>
+        <a href="/create/" class="btn btn-primary btn-lg mt-3">
+            Create Short URL
+        </a>
+    </div>
 
-<div class="jumbotron">
-    <center>
-        <h3>Check Out My Other Projects</h3>
-        <a href="https://github.com/koiralasamyog"><button type="button"
-                class="btn btn-primary">Here</button></a>
-    </center>
+    <div class="card text-center p-4 mt-4">
+        <h4>Check Out My Other Projects</h4>
+        <a href="https://github.com/koiralasamyog" target="_blank"
+           class="btn btn-dark mt-2">
+            Visit GitHub
+        </a>
+    </div>
 </div>
-{% endblock content %}
+{% endblock %}

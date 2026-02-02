@@ -2,10 +2,13 @@
 
 
 {% block content %}
-<center>
-    <h1>Error: Page Not Found :(</h1>
-    <a href="/"><button type="button" class="btn btn-info ml-3 mr-3"
-            style="font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">Home</button></a>
-    <a href="/"><button type="button" class="btn btn-dark ml-3 mr-3">Create New URL</button></a>
-</center>
-{% endblock content %}
+<div class="container mt-5 text-center">
+    <div class="card p-5">
+        <h1>😕 404</h1>
+        <p class="text-muted">Page not found</p>
+
+        <a href="/" class="btn btn-info mr-2">Home</a>
+        <a href="/create/" class="btn btn-dark">Create URL</a>
+    </div>
+</div>
+{% endblock %}

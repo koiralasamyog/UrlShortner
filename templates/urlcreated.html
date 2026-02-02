@@ -1,9 +1,16 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<center>
-    <div class="alert alert-primary" role="alert">
-        <h1>Your Short URL: "domain.com/{{ chars }}"</h1>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card text-center p-4">
+                <h4 class="text-success mb-3">🎉 URL Created Successfully</h4>
+                <h5>
+                    <code>domain.com/{{ chars }}</code>
+                </h5>
+            </div>
+        </div>
     </div>
-</center>
-{% endblock content %}
+</div>
+{% endblock %}

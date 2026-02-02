@@ -9,24 +9,40 @@
     <title>Url Shortener</title>
 
     <style>
-        #page-container {
-            position: relative;
-            min-height: 100vh;
-        }
+    body {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        background: #f8f9fa;
+    }
 
-        #content-wrap {
-            padding-bottom: 2.5rem;
-            /* Footer height */
-        }
+    .navbar {
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    }
 
-        #footer {
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-            height: 4.0rem;
-            /* Footer height */
-        }
+    .card {
+        border: none;
+        border-radius: 12px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+    }
+
+    .btn {
+        border-radius: 8px;
+    }
+
+    main {
+        flex: 1;
+    }
+
+    footer {
+	min-height: 50px;
+        background: #ffffff;
+        box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+        padding: 12px 0;
+        text-align: center;
+    }    
     </style>
+
 </head>
 
 <body>
@@ -34,27 +50,22 @@
         <div id="content-wrap">
             <nav class="navbar navbar-light bg-light">
                 <a class="navbar-brand" href="/">
-                    <img src="static/images/website.png" width="60"
-                        height="60" alt="" loading="lazy">
-                    UrlShort
+                    <img src="{% static 'images/website.png' %}" width="50" height="50" class="mr-2">
+                    UrlShortner
                 </a>
-                <span>
-                    <a href="/"><button type="button" class="btn btn-info">Home</button></a>
-                    <a href="/create/"><button type="button" class="btn btn-dark">Create New URL</button></a>
-                </span>
             </nav>
 
             {% block content %}
 
             {% endblock content %}
         </div>
-        <footer id="footer">
+    </div>
+	
+	<footer id="footer">
             <center>
-                <h5>Thanks For Choosing URLShort by Samyog Koirala</h5>
+                <h5>URLShortner by Samyog Koirala</h5>
             </center>
         </footer>
-    </div>
-
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
