@@ -46,12 +46,15 @@ Features include:
 1. Clone the repository:
 
   git clone https://github.com/yourusername/UrlShortener.git
+  
   cd UrlShortener
 
 2. Create a virtual environment and activate it:
    
   python -m venv venv
+  
   source venv/bin/activate  # Linux / macOS
+  
   venv\Scripts\activate     # Windows
 
 3. Install dependencies:
