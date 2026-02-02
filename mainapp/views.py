@@ -13,7 +13,7 @@ from .utils import generate_qr_code
 @login_required
 def home(request):
     short_url = None
-    qr_code = None  # new
+    qr_code = None 
 
     if request.method == 'POST':
         form = CreateNewShortURL(request.POST)
@@ -80,15 +80,11 @@ def edit_url(request, url_id):
         form = CreateNewShortURL(request.POST, instance=url_obj)
         if form.is_valid():
             custom_url = form.cleaned_data.get('custom_short_url')
-            
-            # Check uniqueness if custom URL is changed
             if custom_url and ShortURL.objects.filter(short_url=custom_url).exclude(id=url_obj.id).exists():
                 form.add_error('custom_short_url', 'This short URL is already taken.')
                 return render(request, 'edit_url.html', {'form': form})
 
             obj = form.save(commit=False)
-
-            # If no custom URL, regenerate Base62 from ID
             if not custom_url:
                 obj.short_url = encode_base62(obj.id)
 
