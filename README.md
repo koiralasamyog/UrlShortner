@@ -47,7 +47,7 @@ Features include:
 1. **Clone the repository:**
 
 ```bash
-git clone https://github.com/yourusername/UrlShortener.git
+git clone https://github.com/koiralasamyog/UrlShortener.git
 cd UrlShortener
 ```
 
