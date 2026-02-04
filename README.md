@@ -47,8 +47,8 @@ Features include:
 1. **Clone the repository:**
 
 ```bash
-git clone https://github.com/yourusername/url-shortener.git
-cd url-shortener
+git clone https://github.com/yourusername/UrlShortener.git
+cd UrlShortener
 ```
 
 2. **Create and activate a virtual environment:**
